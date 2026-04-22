@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Eligibility Check</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<h2>Student Eligibility Check</h2>
+
+<div id="info">
+<p>Student ID: P12345</p>
+<p>Email: student@gmail.com</p>
+<p>City: Los Angeles</p>
+<p>ZIP: 90001</p>
+<p>Phone: 123456789</p>
+<p>Populi Name: John Doe</p>
+<p>Course Abbrv: CS101</p>
+</div>
+
+<h3 id="status"></h3>
+
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+let city = "Los Angeles";
+let statusText = "";
+
+if (city === "Los Angeles") {
+    statusText = "Eligible";
+} else {
+    statusText = "Not Eligible";
+}
+
+document.getElementById("status").innerHTML = "Status: " + statusText;
+
+let eligible = statusText === "Eligible" ? 1 : 0;
+let notEligible = statusText === "Not Eligible" ? 1 : 0;
+
+new Chart(document.getElementById("myChart"), {
+    type: "bar",
+    data: {
+        labels: ["Eligible", "Not Eligible"],
+        datasets: [{
+            label: "Student Status",
+            data: [eligible, notEligible]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
